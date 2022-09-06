@@ -29,4 +29,5 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
             'status' => 'success',
         ], 200);
     });
+    $router->get('/dashboard', 'UserController@index');
 });

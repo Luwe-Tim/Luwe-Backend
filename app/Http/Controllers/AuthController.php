@@ -14,12 +14,14 @@ class AuthController extends Controller{
             'username' => 'required|string|max:255',
             'phone' => 'required|string|unique:users',
             'password' => 'required|string|min:6',
+            'role' => 'required|string'
         ]);
 
         $user = new User;
         $user->username =  $validate['username'];
         $user->phone =  $validate['phone'];
         $user->password =  Hash::make($validate['password']);
+        $user->role =  $validate['role'];
         $user->save();
 
         return response()->json($user, 201);

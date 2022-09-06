@@ -12,6 +12,8 @@ class Users extends Migration{
             $table->string('username');
             $table->string('phone')->unique();
             $table->string('password');
+            $table->string('role');
+            $table->text('profile')->nullable();
             $table->timestamps();
         });
     }
