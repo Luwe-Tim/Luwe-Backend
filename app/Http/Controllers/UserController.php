@@ -9,15 +9,24 @@ class UserController extends Controller{
     public function index()
     {
         // count all users with specified role 
-        $customer = User::where('role', 'customer')->count();
-        $pedagang = User::where('role', 'pedagang')->count();
-        // save count from every role in array with key and value 
-        $data = [
-            'total_customer' => $customer,
-            'total_pedagang' => $pedagang
-        ];
+        if (auth()->user()->role == 'admin') {
+            $customer = User::where('role', 'customer')->count();
+            $pedagang = User::where('role', 'pedagang')->count();
+            $new_pedagang = User::where('role', 'pedagang')->orderBy('created_at', 'desc')->limit(4)->get();
+            // save count from every role in array with key and value 
+            $data = [
+                'total_customer' => $customer,
+                'total_pedagang' => $pedagang,
+                'new_pedagang' => $new_pedagang
+            ];
+    
+            return $data;
 
-        $new_pedagang = User::where('role', 'pedagang')->where('created_at',);
-        return $data;
+        } else {
+            return response()->json([
+                'message' => 'You are not authorized to access this page',
+                'status' => 'error',
+            ], 401);
+        }
     }
 }

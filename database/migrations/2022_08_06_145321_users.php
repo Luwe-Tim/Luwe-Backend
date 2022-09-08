@@ -14,6 +14,7 @@ class Users extends Migration{
             $table->string('password');
             $table->string('role');
             $table->text('profile')->nullable();
+            $table->boolean('verified')->nullable()->default(false);
             $table->timestamps();
         });
     }

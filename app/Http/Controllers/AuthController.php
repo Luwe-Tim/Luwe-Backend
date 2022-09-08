@@ -30,7 +30,7 @@ class AuthController extends Controller{
     public function login(Request $request) {
         $validate = $this->validate($request, [
             'phone' => 'required|string',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6'
         ]);
 
         $user = User::where('phone', $validate['phone'])->first();

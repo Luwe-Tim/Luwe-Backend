@@ -29,5 +29,6 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
             'status' => 'success',
         ], 200);
     });
-    $router->get('/dashboard', 'UserController@index');
+    $router->get('/admin/dashboard', 'UserController@index');
+    $router->post('/pedagang/deskripsi', 'DeskripsiController@store');
 });
