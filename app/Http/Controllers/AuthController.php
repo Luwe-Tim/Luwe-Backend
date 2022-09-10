@@ -34,6 +34,13 @@ class AuthController extends Controller{
         ]);
 
         $user = User::where('phone', $validate['phone'])->first();
+        if ($user->role == 'pedagang') {
+            if ($user->verified == false) {
+                return response()->json([
+                    'message' => 'Akun anda belum diverifikasi'
+                ], 401);
+            }
+        }
 
         if(!$user || !Hash::check($validate['password'], $user->password)) {
             return response()->json([

@@ -16,6 +16,7 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+$router->post('/image', 'UserController@gambar');
 
 $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('/register', 'AuthController@register');
@@ -30,5 +31,6 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
         ], 200);
     });
     $router->get('/admin/dashboard', 'UserController@index');
+    $router->get('deskripsi', 'DeskripsiController@index');
     $router->post('/pedagang/deskripsi', 'DeskripsiController@store');
 });

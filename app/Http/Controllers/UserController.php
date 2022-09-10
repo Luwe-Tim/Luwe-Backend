@@ -12,7 +12,7 @@ class UserController extends Controller{
         if (auth()->user()->role == 'admin') {
             $customer = User::where('role', 'customer')->count();
             $pedagang = User::where('role', 'pedagang')->count();
-            $new_pedagang = User::where('role', 'pedagang')->orderBy('created_at', 'desc')->limit(4)->get();
+            $new_pedagang = User::where('role', 'pedagang')->where('verified', true)->orderBy('created_at', 'desc')->limit(4)->get();
             // save count from every role in array with key and value 
             $data = [
                 'total_customer' => $customer,
@@ -28,5 +28,8 @@ class UserController extends Controller{
                 'status' => 'error',
             ], 401);
         }
+    }
+    public function gambar(Request $request) {
+        return $request->all();
     }
 }

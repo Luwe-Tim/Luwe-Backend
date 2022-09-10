@@ -4,21 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Deskripsi extends Migration{
+class Locations extends Migration{
     
     public function up(){
-        Schema::create('deskripsi', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('nama_dagangan');
-            $table->string('kategori_dagangan');
-            $table->string('jam_dagang');
-            $table->text('deskripsi');
+            $table->string('lat')->nullable();
+            $table->string('long')->nullable();
             $table->timestamps();
         });
     }
 
     public function down(){
-        Schema::dropIfExists('deskripsi');
+        Schema::dropIfExists('locations');
     }
 }
