@@ -32,4 +32,6 @@ class UserController extends Controller{
     public function gambar(Request $request) {
         return $request->all();
     }
+
+    
 }

@@ -33,4 +33,7 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->get('/admin/dashboard', 'UserController@index');
     $router->get('deskripsi', 'DeskripsiController@index');
     $router->post('/pedagang/deskripsi', 'DeskripsiController@store');
+    $router->get('/user/location', 'LocationController@store');
+    $router->get('/admin/verified/{id}', 'VerificationController@verified');
+    $router->get('/admin/verification', 'VerificationController@verification');
 });

@@ -76,5 +76,12 @@ class UsersTableSeeder extends Seeder
             'role' => 'pedagang',
             'verified' => false
         ]);
+        User::create([
+            'username' => 'joni',
+            'phone' => '01234',
+            'password' => Hash::make('aaaaaa'),
+            'role' => 'pedagang',
+            'verified' => true
+        ]);
     }
 }
