@@ -11,7 +11,7 @@ class VerificationController extends Controller{
             $user = User::find($id);
             return $user;
             $user->update([
-                'verified' => false
+                'verified' => true
             ]);
             return response()->json([
                 'message' => 'User has been verified',
